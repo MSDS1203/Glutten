@@ -15,7 +15,7 @@ public class Main {
     	int id;
     	
     	try (var connection =  DB.connect()){
-            control.log.println("Connected to the PostgreSQL database.");
+            System.out.println("Connected to the PostgreSQL database.");
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
