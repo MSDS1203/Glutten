@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {StyleSheet, TextInput, Text, View} from 'react-native';
 
 const Index = () => {
-  const [number, onChangeNumber] = React.useState('');
+  const [query, setText] = useState('');
+  const [ displayText, setDisplayText] = useState('');
+
+  const handleDisplayText = () => { //For displaying the text
+    setDisplayText(query);
+    setText('');
+  }
 
   return (
 
@@ -10,11 +16,13 @@ const Index = () => {
         <Text style = {styles.text}>Glutten</Text>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
+          onChangeText={setText}
+          value={query}
           placeholder="Enter a Product"
-          keyboardType="numeric"
+          onSubmitEditing={handleDisplayText}
         />
+
+        <Text>You Typed: { query }</Text>
 
       </View>
   );
