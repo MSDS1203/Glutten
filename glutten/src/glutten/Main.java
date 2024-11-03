@@ -95,6 +95,7 @@ public class Main {
     		else {
     			System.out.println("Invalid input - try again");
     		}
+    		input.close();
     	
     	}
     	
