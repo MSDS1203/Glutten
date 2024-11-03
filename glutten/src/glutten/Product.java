@@ -23,7 +23,7 @@ public class Product {
         return description;
     }
 
-    public void setPrice(String desc) {
+    public void setDesc(String desc) {
         description = desc;
     }
 
