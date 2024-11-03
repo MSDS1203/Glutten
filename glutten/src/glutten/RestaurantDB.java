@@ -1,5 +1,7 @@
 package glutten;
 
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class RestaurantDB {
 	public static List<MenuItem> searchMenuItems(String query){
 		 var menuItems = new ArrayList<MenuItem>();
 		 
-		 var sql = "SELECT rest_name, menu_item, description FROM restaurant WHERE item_name LIKE ?;";
+		 var sql = "SELECT rest_name, menu_item, description FROM restaurant WHERE LOWER(menu_item) LIKE ?;";
 		 
 		 try (var conn =  DB.connect();
 	             var pstmt = conn.prepareStatement(sql)) {
@@ -32,7 +34,7 @@ public class RestaurantDB {
 	public static List<MenuItem> searchGFByRestaurant(String rest){
 		 var menuItems = new ArrayList<MenuItem>();
 		 
-		 var sql = "SELECT menu_item, description FROM restaurant WHERE rest_name LIKE ? AND glutenContaining=0;";
+		 var sql = "SELECT menu_item, description FROM restaurant WHERE LOWER(rest_name) LIKE LOWER(?) AND glutenContaining=0;";
 		 
 		 try (var conn =  DB.connect();
 	             var pstmt = conn.prepareStatement(sql)) {
@@ -40,7 +42,7 @@ public class RestaurantDB {
 	            var rs = pstmt.executeQuery();
 	            while (rs.next()) {
 	                var item = new MenuItem(
-	                    rs.getString("rest_name"),
+	                	rest,
 	                    rs.getString("menu_item"),
 	                    rs.getString("description")
 	                );
@@ -56,7 +58,7 @@ public class RestaurantDB {
 	public static List<MenuItem> searchOptionsByRestaurant(String rest){
 		 var menuItems = new ArrayList<MenuItem>();
 		 
-		 var sql = "SELECT menu_item, description FROM restaurant WHERE rest_name LIKE ? AND glutenContaining=1;";
+		 var sql = "SELECT menu_item, description FROM restaurant WHERE LOWER(rest_name) LIKE LOWER(?) AND glutenContaining=1;";
 		 
 		 try (var conn =  DB.connect();
 	             var pstmt = conn.prepareStatement(sql)) {
@@ -64,7 +66,7 @@ public class RestaurantDB {
 	            var rs = pstmt.executeQuery();
 	            while (rs.next()) {
 	                var item = new MenuItem(
-	                    rs.getString("rest_name"),
+	                    rest,
 	                    rs.getString("menu_item"),
 	                    rs.getString("description")
 	                );

@@ -13,6 +13,13 @@ public class MenuItem {
         this.gluten = gluten;
     }
 
+    public MenuItem(String rest, String name, String desc){
+        restaurant = rest;
+        item_name = name;
+        description = desc;
+        this.gluten = -1;
+    }
+    
     public String getName() {
         return item_name;
     }
