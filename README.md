@@ -11,3 +11,4 @@ The front_end branch contains code for a potential React Native application for 
 - pgadmin (and the csv files uploaded in this branch for the database)
 - Java (version 17 or higher)
 - Java IDE (Eclipse, IntelliJ, etc.)
+- CSV files of data - certain data files were too large to download so can do so from [here](https://fdc.nal.usda.gov/download-datasets.html)
