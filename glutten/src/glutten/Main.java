@@ -64,8 +64,10 @@ public class Main {
         	}
     		
     		else if (options == 'r') {
+    			input.nextLine();
     			System.out.println("Enter a restaurant: ");
     			restaurant = input.nextLine();
+    			System.out.println("Hit enter to continue: ");
     			input.nextLine();
     			List<MenuItem> rest1 = new ArrayList<MenuItem>();
     			List<MenuItem> rest2 = new ArrayList<MenuItem>();
@@ -74,13 +76,14 @@ public class Main {
     	        
     	        System.out.println("\nGluten-Free Menu Items:");
     	        for(int i = 0; i < rest1.size(); i++) {
-                	System.out.println(rest1.get(i).toString());
+                	System.out.println(rest1.get(i).getName());
                 	
                 }
     	        
     	        System.out.println("\nMenu Items that Have the Option to be Gluten Free:");
     	        for(int i = 0; i < rest2.size(); i++) {
-                	System.out.println(rest2.get(i).toString());
+    	        	
+    	        	System.out.println(rest2.get(i).getName());
                 	
                 }
     			
